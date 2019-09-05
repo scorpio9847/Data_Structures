@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+long long int function(long long int arr[],long long int n)
+{
+    long long int i,j,k;
+    long long int length = sizeof(arr[n])/sizeof(arr[0]);
+    cout << length;
+    for(k=1;k<n;k++)
+    {
+        
+        long long int temp = arr[length-1];
+        for(i = 1; i < length ; i++)
+        {
+            arr[i] = arr[i-1];
+        }
+        arr[0] = temp;
+        
+        for(j = n-k-1;j<length;j++)
+        {
+            arr[j] = arr[j+1];
+        }
+        length--;
+        return arr[0];
+    }
+}
+int main() {
+    long long int T,i;
+    long long int N;
+    long long int A[N];
+    cin >> T;
+    while(T--)
+    {
+        cin >> N;
+        for(i=0;i<N;i++)
+        {
+            cin >> A[i];
+        }
+        cout << function(A,N) << "\n";
+	//code
+    }
+	return 0;
+}
