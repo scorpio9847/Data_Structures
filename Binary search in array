@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+void binarysearch(int a[],int l, int r, int x)
+{
+    if(r>=l)
+    {
+        int mid = l + (r-l)/2;
+        if(a[mid] == x)
+        {
+            cout<< "1" << "\n";
+        }
+        if(a[mid] > x)
+        {
+            return binarysearch(a,l,mid-1,x);
+        }
+        if(a[mid] < x)
+        {
+            return binarysearch(a,mid+1,r,x);
+        }
+    }
+    else
+    {
+        cout << "-1" << "\n";
+    }
+}
+
+int main() {
+	int T;
+	cin >> T;
+	while(T>0)
+	{
+    	int N;
+    	cin >> N;
+    	int key;
+    	cin >> key;
+    	int arr[N] = {};
+    	int i;
+    	for(i=0;i<N;i++)
+    	{
+    	    cin >> arr[i];
+    	}
+    	
+    	binarysearch(arr,0,N-1,key);
+    	T--;
+	}
+	return 0;
+}
