@@ -1,0 +1,66 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void reverse(int a[],int start,int end)
+{
+    if(start <= end)
+    {
+        int temp = a[start];
+        a[start] = a[end];
+        a[end] = temp;
+        reverse(a,start+1,end-1);
+    }
+    return;
+    
+}
+
+void rotate(int arr[],int n,int d)
+{
+    int i;
+    if(n==1)
+    {
+        cout << arr[0] << "\n";
+        return;
+    }
+    if(d==0 || d==n)
+    {
+         for( i=0;i<n;i++)
+         {
+            cout<< arr[i] << " ";
+         }
+         cout << "\n";
+         return;
+    }
+    reverse(arr,0,d-1);
+    reverse(arr,d,n-1);
+    reverse(arr,0,n-1);
+
+    for( i=0;i<n;i++)
+    {
+        cout<< arr[i] << " ";
+    }
+    cout << "\n";
+    return;
+}
+
+
+int main() {
+	int T;
+	cin >> T;
+	while(T--)
+	{
+    	int N;
+    	cin >> N;
+    	int A[N] = {};
+    	int i;
+    	for(i = 0; i < N; i++)
+    	{
+    	    cin >> A[i];
+    	}
+    	int d;
+    	cin >> d;
+	
+	    rotate(A,N,d);
+	}
+	return 0;
+}
